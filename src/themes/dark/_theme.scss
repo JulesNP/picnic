@@ -1,0 +1,47 @@
+// Top level variables for Picnic CSS
+// Note: some others are available under each specific plugin
+
+@import "colors";
+
+:root {
+  --fg: #111;
+  --bg: #fff;
+  --fg-rgb: 17, 17, 17;
+  --bg-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #fff;
+    --bg: #282828;
+    --fg-rgb: 255, 255, 255;
+    --bg-rgb: 40, 40, 40;
+  }
+}
+
+// Colors (from /themes/default/colors)
+$picnic-white: var(--bg) !default;
+$picnic-black: var(--fg) !default;
+$picnic-primary: darken($blue, 10%) !default;
+$picnic-success: darken($green, 10%) !default;
+$picnic-warning: darken($orange, 10%) !default;
+$picnic-error: darken($red, 10%) !default;
+$picnic-dull: $gray !default;
+$picnic-color-variation: 10% !default;
+$picnic-transparency: 0.2 !default;
+
+// Spaces
+$picnic-separation: 0.6em !default;
+$picnic-breakpoint: 60em !default;
+
+// Shapes
+$picnic-radius: 0.3em !default;
+$picnic-border: 1px solid $gray !default;
+$picnic-shadow: 0 0 0.3em rgba(0, 0, 0, $picnic-transparency) !default;
+$picnic-overlay: rgba(var(--fg-rgb), $picnic-transparency);
+
+// Transitions
+$picnic-transition: all 0.2s ease !default;
+$picnic-nav-timing: 0.2s !default;
+
+@import "plugins";

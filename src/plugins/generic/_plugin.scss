@@ -64,7 +64,7 @@ pre {
 blockquote {
   padding: 0 0 0 1em;
   margin: 0 0 0 .1em;
-  box-shadow: inset 5px 0 rgba($picnic-black, .3);
+  box-shadow: inset 5px 0 rgba(var(--fg-rgb), .3);
 }
 
 label {

@@ -1,16 +1,85 @@
 @charset "UTF-8";
+:root {
+  --fg: #111;
+  --bg: #fff;
+  --fg-rgb: 17, 17, 17;
+  --bg-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #fff;
+    --bg: #282828;
+    --fg-rgb: 255, 255, 255;
+    --bg-rgb: 40, 40, 40;
+  }
+}
+nav,
+input[readonly] {
+  background-color: #ddd !important;
+}
+
+.dark {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: text-top;
+  margin-right: 0.1em;
+}
+
+.dark .icon {
+  filter: invert(1);
+}
+
+th,
+button,
+.button:not(.pseudo),
+input[type=submit] {
+  color: #fff !important;
+}
+
+table input,
+table select,
+table button,
+table .button {
+  color: var(--fg);
+  font-size: 0.7em;
+  font-weight: 400;
+}
+
+.income {
+  color: #2ecc40;
+}
+
+.expense {
+  color: #ff4136;
+}
+
+@media (prefers-color-scheme: dark) {
+  nav,
+  input[readonly] {
+    background-color: #444 !important;
+  }
+  .icon {
+    filter: invert(1);
+  }
+  input[type=date]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
 html {
-  font-family: sans-serif;
-  /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /**
@@ -50,10 +119,8 @@ audio,
 canvas,
 progress,
 video {
-  display: inline-block;
-  /* 1 */
-  vertical-align: baseline;
-  /* 2 */
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
 }
 
 /**
@@ -128,8 +195,8 @@ h1 {
  * Address styling not present in IE 8/9.
  */
 mark {
-  background: #fff;
-  color: #111;
+  background: var(--bg);
+  color: var(--fg);
 }
 
 /**
@@ -227,12 +294,9 @@ input,
 optgroup,
 select,
 textarea {
-  color: inherit;
-  /* 1 */
-  font: inherit;
-  /* 2 */
-  margin: 0;
-  /* 3 */
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
 }
 
 /**
@@ -264,10 +328,8 @@ button,
 html input[type=button],
 input[type=reset],
 input[type=submit] {
-  -webkit-appearance: button;
-  /* 2 */
-  cursor: pointer;
-  /* 3 */
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
 }
 
 /**
@@ -304,10 +366,8 @@ input {
  */
 input[type=checkbox],
 input[type=radio] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**
@@ -343,10 +403,8 @@ fieldset {
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
 legend {
-  border: 0;
-  /* 1 */
-  padding: 0;
-  /* 2 */
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**
@@ -391,10 +449,10 @@ body {
 }
 
 body {
-  color: #111;
+  color: var(--fg);
   font-size: 1.1em;
   line-height: 1.5;
-  background: #fff;
+  background: var(--bg);
 }
 
 main {
@@ -416,10 +474,10 @@ li {
 }
 
 a {
-  color: #0074d9;
+  color: #0059a6;
   text-decoration: none;
   box-shadow: none;
-  transition: all 0.3s;
+  transition: all 0.2s ease;
 }
 
 code {
@@ -432,7 +490,7 @@ pre {
   text-align: left;
   padding: 0.3em;
   background: #f5f5f5;
-  border-radius: 0.2em;
+  border-radius: 0.3em;
 }
 pre code {
   padding: 0;
@@ -441,7 +499,7 @@ pre code {
 blockquote {
   padding: 0 0 0 1em;
   margin: 0 0 0 0.1em;
-  box-shadow: inset 5px 0 rgba(17, 17, 17, 0.3);
+  box-shadow: inset 5px 0 rgba(var(--fg-rgb), 0.3);
 }
 
 label {
@@ -467,10 +525,10 @@ i[class*=" icon-"]:before {
   margin: 0;
   padding: 0.3em 0.9em;
   vertical-align: middle;
-  background: #0074d9;
-  color: #fff;
+  background: #0059a6;
+  color: var(--bg);
   border: 0;
-  border-radius: 0.2em;
+  border-radius: 0.3em;
   width: auto;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -482,17 +540,17 @@ i[class*=" icon-"]:before {
 .success.dropimage, button.success,
 .success.button,
 .success[type=submit], .success.label, .success[data-tooltip]:after {
-  background: #2ecc40;
+  background: #25a233;
 }
 .warning.dropimage, button.warning,
 .warning.button,
 .warning[type=submit], .warning.label, .warning[data-tooltip]:after {
-  background: #ff851b;
+  background: #e76b00;
 }
 .error.dropimage, button.error,
 .error.button,
 .error[type=submit], .error.label, .error[data-tooltip]:after {
-  background: #ff4136;
+  background: #ff1103;
 }
 .pseudo.dropimage, button.pseudo,
 .pseudo.button,
@@ -513,18 +571,18 @@ i[class*=" icon-"]:before {
 [type=submit] {
   margin: 0.3em 0;
   cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 0.2em;
+  transition: all 0.2s ease;
+  border-radius: 0.3em;
   height: auto;
   vertical-align: baseline;
-  box-shadow: 0 0 rgba(17, 17, 17, 0) inset;
+  box-shadow: 0 0 rgba(var(--fg-rgb), 0) inset;
 }
 .dropimage:hover, button:hover,
 .button:hover,
 [type=submit]:hover, .dropimage:focus, button:focus,
 .button:focus,
 [type=submit]:focus {
-  box-shadow: inset 0 0 0 99em rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 99em rgba(var(--bg-rgb), 0.2);
   border: 0;
 }
 .pseudo.dropimage:hover, button.pseudo:hover,
@@ -532,14 +590,14 @@ i[class*=" icon-"]:before {
 .pseudo[type=submit]:hover, .pseudo.dropimage:focus, button.pseudo:focus,
 .pseudo.button:focus,
 .pseudo[type=submit]:focus {
-  box-shadow: inset 0 0 0 99em rgba(17, 17, 17, 0.1);
+  box-shadow: inset 0 0 0 99em rgba(var(--fg-rgb), 0.1);
 }
 .active.dropimage, button.active,
 .active.button,
 .active[type=submit], .dropimage:active, button:active,
 .button:active,
 [type=submit]:active {
-  box-shadow: inset 0 0 0 99em rgba(17, 17, 17, 0.2);
+  box-shadow: inset 0 0 0 99em rgba(var(--fg-rgb), 0.2);
 }
 [disabled].dropimage, button[disabled],
 [disabled].button,
@@ -551,7 +609,7 @@ i[class*=" icon-"]:before {
 
 :checked + .toggle,
 :checked + .toggle:hover {
-  box-shadow: inset 0 0 0 99em rgba(17, 17, 17, 0.2);
+  box-shadow: inset 0 0 0 99em rgba(var(--fg-rgb), 0.2);
 }
 
 [type] + .toggle {
@@ -570,15 +628,15 @@ textarea,
   height: 2.1em;
   padding: 0.3em 0.6em;
   border: 1px solid #aaa;
-  background-color: #fff;
-  border-radius: 0.2em;
-  transition: all 0.3s;
+  background-color: var(--bg);
+  border-radius: 0.3em;
+  transition: all 0.2s ease;
   width: 100%;
 }
 input:focus,
 textarea:focus,
 .select select:focus {
-  border: 1px solid #0074d9;
+  border: 1px solid #0059a6;
   outline: 0;
 }
 
@@ -596,10 +654,10 @@ textarea {
 }
 
 select {
-  background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjMiPjxwYXRoIGQ9Im0gMCwxIDEsMiAxLC0yIHoiLz48L3N2Zz4=) no-repeat scroll 95% center/10px 15px;
+  background: var(--bg) url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjMiPjxwYXRoIGQ9Im0gMCwxIDEsMiAxLC0yIHoiLz48L3N2Zz4=) no-repeat scroll 95% center/10px 15px;
   background-position: calc(100% - 15px) center;
   border: 1px solid #aaa;
-  border-radius: 0.2em;
+  border-radius: 0.3em;
   cursor: pointer;
   width: 100%;
   height: 2.2em;
@@ -614,12 +672,12 @@ select::-ms-expand {
   display: none;
 }
 select:focus, select:active {
-  border: 1px solid #0074d9;
+  border: 1px solid #0059a6;
   transition: outline 0s;
 }
 select:-moz-focusring {
   color: transparent;
-  text-shadow: 0 0 0 #111;
+  text-shadow: 0 0 0 var(--fg);
 }
 select option {
   font-size: inherit;
@@ -638,7 +696,7 @@ select[multiple] {
   display: inline-block;
 }
 [type=checkbox] + .checkable:hover:before, [type=radio] + .checkable:hover:before, [type=checkbox]:focus + .checkable:before, [type=radio]:focus + .checkable:before {
-  border: 1px solid #0074d9;
+  border: 1px solid #0059a6;
 }
 [type=checkbox] + .checkable, [type=radio] + .checkable {
   position: relative;
@@ -662,18 +720,18 @@ select[multiple] {
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  transition: all 0.3s;
+  transition: all 0.2s ease;
 }
 [type=checkbox] + .checkable:before, [type=radio] + .checkable:before {
   border: 1px solid #aaa;
 }
 [type=checkbox]:checked + .checkable:after, [type=radio]:checked + .checkable:after {
-  background: #111;
+  background: var(--fg);
   transform: scale(0.5) translateY(-100%);
 }
 
 [type=checkbox] + .checkable:before {
-  border-radius: 0.2em;
+  border-radius: 0.3em;
 }
 [type=checkbox] + .checkable:after {
   content: "✔";
@@ -683,10 +741,10 @@ select[multiple] {
   opacity: 0;
 }
 [type=checkbox]:checked + .checkable:after {
-  color: #111;
+  color: var(--fg);
   background: none;
   transform: translateY(-50%);
-  transition: all 0.3s;
+  transition: all 0.2s ease;
   visibility: visible;
   opacity: 1;
 }
@@ -703,20 +761,20 @@ th {
 th {
   text-align: left;
   font-weight: 900;
-  color: #fff;
-  background-color: #0074d9;
+  color: var(--bg);
+  background-color: #0059a6;
 }
 
 .success th {
-  background-color: #2ecc40;
+  background-color: #25a233;
 }
 
 .warning th {
-  background-color: #ff851b;
+  background-color: #e76b00;
 }
 
 .error th {
-  background-color: #ff4136;
+  background-color: #ff1103;
 }
 
 .dull th {
@@ -724,7 +782,7 @@ th {
 }
 
 tr:nth-child(even) {
-  background: rgba(17, 17, 17, 0.05);
+  background: rgba(var(--fg-rgb), 0.05);
 }
 
 .flex {
@@ -738,8 +796,7 @@ tr:nth-child(even) {
 
 .flex > * {
   box-sizing: border-box;
-  flex: 1 1 auto;
-  /* Default for IE10 bug */
+  flex: 1 1 auto; /* Default for IE10 bug */
   padding-left: 0.6em;
   padding-bottom: 0.6em;
 }
@@ -808,47 +865,36 @@ tr:nth-child(even) {
   .one-500 > * {
     width: 100%;
   }
-
   .two-500 > * {
     width: 50%;
   }
-
   .three-500 > * {
     width: 33.33333%;
   }
-
   .four-500 > * {
     width: 25%;
   }
-
   .five-500 > * {
     width: 20%;
   }
-
   .six-500 > * {
     width: 16.66666%;
   }
-
   .seven-500 > * {
     width: 14.28571%;
   }
-
   .eight-500 > * {
     width: 12.5%;
   }
-
   .nine-500 > * {
     width: 11.11111%;
   }
-
   .ten-500 > * {
     width: 10%;
   }
-
   .eleven-500 > * {
     width: 9.09091%;
   }
-
   .twelve-500 > * {
     width: 8.33333%;
   }
@@ -857,47 +903,36 @@ tr:nth-child(even) {
   .one-600 > * {
     width: 100%;
   }
-
   .two-600 > * {
     width: 50%;
   }
-
   .three-600 > * {
     width: 33.33333%;
   }
-
   .four-600 > * {
     width: 25%;
   }
-
   .five-600 > * {
     width: 20%;
   }
-
   .six-600 > * {
     width: 16.66666%;
   }
-
   .seven-600 > * {
     width: 14.28571%;
   }
-
   .eight-600 > * {
     width: 12.5%;
   }
-
   .nine-600 > * {
     width: 11.11111%;
   }
-
   .ten-600 > * {
     width: 10%;
   }
-
   .eleven-600 > * {
     width: 9.09091%;
   }
-
   .twelve-600 > * {
     width: 8.33333%;
   }
@@ -906,47 +941,36 @@ tr:nth-child(even) {
   .one-700 > * {
     width: 100%;
   }
-
   .two-700 > * {
     width: 50%;
   }
-
   .three-700 > * {
     width: 33.33333%;
   }
-
   .four-700 > * {
     width: 25%;
   }
-
   .five-700 > * {
     width: 20%;
   }
-
   .six-700 > * {
     width: 16.66666%;
   }
-
   .seven-700 > * {
     width: 14.28571%;
   }
-
   .eight-700 > * {
     width: 12.5%;
   }
-
   .nine-700 > * {
     width: 11.11111%;
   }
-
   .ten-700 > * {
     width: 10%;
   }
-
   .eleven-700 > * {
     width: 9.09091%;
   }
-
   .twelve-700 > * {
     width: 8.33333%;
   }
@@ -955,47 +979,36 @@ tr:nth-child(even) {
   .one-800 > * {
     width: 100%;
   }
-
   .two-800 > * {
     width: 50%;
   }
-
   .three-800 > * {
     width: 33.33333%;
   }
-
   .four-800 > * {
     width: 25%;
   }
-
   .five-800 > * {
     width: 20%;
   }
-
   .six-800 > * {
     width: 16.66666%;
   }
-
   .seven-800 > * {
     width: 14.28571%;
   }
-
   .eight-800 > * {
     width: 12.5%;
   }
-
   .nine-800 > * {
     width: 11.11111%;
   }
-
   .ten-800 > * {
     width: 10%;
   }
-
   .eleven-800 > * {
     width: 9.09091%;
   }
-
   .twelve-800 > * {
     width: 8.33333%;
   }
@@ -1004,47 +1017,36 @@ tr:nth-child(even) {
   .one-900 > * {
     width: 100%;
   }
-
   .two-900 > * {
     width: 50%;
   }
-
   .three-900 > * {
     width: 33.33333%;
   }
-
   .four-900 > * {
     width: 25%;
   }
-
   .five-900 > * {
     width: 20%;
   }
-
   .six-900 > * {
     width: 16.66666%;
   }
-
   .seven-900 > * {
     width: 14.28571%;
   }
-
   .eight-900 > * {
     width: 12.5%;
   }
-
   .nine-900 > * {
     width: 11.11111%;
   }
-
   .ten-900 > * {
     width: 10%;
   }
-
   .eleven-900 > * {
     width: 9.09091%;
   }
-
   .twelve-900 > * {
     width: 8.33333%;
   }
@@ -1053,47 +1055,36 @@ tr:nth-child(even) {
   .one-1000 > * {
     width: 100%;
   }
-
   .two-1000 > * {
     width: 50%;
   }
-
   .three-1000 > * {
     width: 33.33333%;
   }
-
   .four-1000 > * {
     width: 25%;
   }
-
   .five-1000 > * {
     width: 20%;
   }
-
   .six-1000 > * {
     width: 16.66666%;
   }
-
   .seven-1000 > * {
     width: 14.28571%;
   }
-
   .eight-1000 > * {
     width: 12.5%;
   }
-
   .nine-1000 > * {
     width: 11.11111%;
   }
-
   .ten-1000 > * {
     width: 10%;
   }
-
   .eleven-1000 > * {
     width: 9.09091%;
   }
-
   .twelve-1000 > * {
     width: 8.33333%;
   }
@@ -1102,47 +1093,36 @@ tr:nth-child(even) {
   .one-1100 > * {
     width: 100%;
   }
-
   .two-1100 > * {
     width: 50%;
   }
-
   .three-1100 > * {
     width: 33.33333%;
   }
-
   .four-1100 > * {
     width: 25%;
   }
-
   .five-1100 > * {
     width: 20%;
   }
-
   .six-1100 > * {
     width: 16.66666%;
   }
-
   .seven-1100 > * {
     width: 14.28571%;
   }
-
   .eight-1100 > * {
     width: 12.5%;
   }
-
   .nine-1100 > * {
     width: 11.11111%;
   }
-
   .ten-1100 > * {
     width: 10%;
   }
-
   .eleven-1100 > * {
     width: 9.09091%;
   }
-
   .twelve-1100 > * {
     width: 8.33333%;
   }
@@ -1151,47 +1131,36 @@ tr:nth-child(even) {
   .one-1200 > * {
     width: 100%;
   }
-
   .two-1200 > * {
     width: 50%;
   }
-
   .three-1200 > * {
     width: 33.33333%;
   }
-
   .four-1200 > * {
     width: 25%;
   }
-
   .five-1200 > * {
     width: 20%;
   }
-
   .six-1200 > * {
     width: 16.66666%;
   }
-
   .seven-1200 > * {
     width: 14.28571%;
   }
-
   .eight-1200 > * {
     width: 12.5%;
   }
-
   .nine-1200 > * {
     width: 11.11111%;
   }
-
   .ten-1200 > * {
     width: 10%;
   }
-
   .eleven-1200 > * {
     width: 9.09091%;
   }
-
   .twelve-1200 > * {
     width: 8.33333%;
   }
@@ -1200,47 +1169,36 @@ tr:nth-child(even) {
   .one-1300 > * {
     width: 100%;
   }
-
   .two-1300 > * {
     width: 50%;
   }
-
   .three-1300 > * {
     width: 33.33333%;
   }
-
   .four-1300 > * {
     width: 25%;
   }
-
   .five-1300 > * {
     width: 20%;
   }
-
   .six-1300 > * {
     width: 16.66666%;
   }
-
   .seven-1300 > * {
     width: 14.28571%;
   }
-
   .eight-1300 > * {
     width: 12.5%;
   }
-
   .nine-1300 > * {
     width: 11.11111%;
   }
-
   .ten-1300 > * {
     width: 10%;
   }
-
   .eleven-1300 > * {
     width: 9.09091%;
   }
-
   .twelve-1300 > * {
     width: 8.33333%;
   }
@@ -1249,47 +1207,36 @@ tr:nth-child(even) {
   .one-1400 > * {
     width: 100%;
   }
-
   .two-1400 > * {
     width: 50%;
   }
-
   .three-1400 > * {
     width: 33.33333%;
   }
-
   .four-1400 > * {
     width: 25%;
   }
-
   .five-1400 > * {
     width: 20%;
   }
-
   .six-1400 > * {
     width: 16.66666%;
   }
-
   .seven-1400 > * {
     width: 14.28571%;
   }
-
   .eight-1400 > * {
     width: 12.5%;
   }
-
   .nine-1400 > * {
     width: 11.11111%;
   }
-
   .ten-1400 > * {
     width: 10%;
   }
-
   .eleven-1400 > * {
     width: 9.09091%;
   }
-
   .twelve-1400 > * {
     width: 8.33333%;
   }
@@ -1298,47 +1245,36 @@ tr:nth-child(even) {
   .one-1500 > * {
     width: 100%;
   }
-
   .two-1500 > * {
     width: 50%;
   }
-
   .three-1500 > * {
     width: 33.33333%;
   }
-
   .four-1500 > * {
     width: 25%;
   }
-
   .five-1500 > * {
     width: 20%;
   }
-
   .six-1500 > * {
     width: 16.66666%;
   }
-
   .seven-1500 > * {
     width: 14.28571%;
   }
-
   .eight-1500 > * {
     width: 12.5%;
   }
-
   .nine-1500 > * {
     width: 11.11111%;
   }
-
   .ten-1500 > * {
     width: 10%;
   }
-
   .eleven-1500 > * {
     width: 9.09091%;
   }
-
   .twelve-1500 > * {
     width: 8.33333%;
   }
@@ -1347,47 +1283,36 @@ tr:nth-child(even) {
   .one-1600 > * {
     width: 100%;
   }
-
   .two-1600 > * {
     width: 50%;
   }
-
   .three-1600 > * {
     width: 33.33333%;
   }
-
   .four-1600 > * {
     width: 25%;
   }
-
   .five-1600 > * {
     width: 20%;
   }
-
   .six-1600 > * {
     width: 16.66666%;
   }
-
   .seven-1600 > * {
     width: 14.28571%;
   }
-
   .eight-1600 > * {
     width: 12.5%;
   }
-
   .nine-1600 > * {
     width: 11.11111%;
   }
-
   .ten-1600 > * {
     width: 10%;
   }
-
   .eleven-1600 > * {
     width: 9.09091%;
   }
-
   .twelve-1600 > * {
     width: 8.33333%;
   }
@@ -1396,47 +1321,36 @@ tr:nth-child(even) {
   .one-1700 > * {
     width: 100%;
   }
-
   .two-1700 > * {
     width: 50%;
   }
-
   .three-1700 > * {
     width: 33.33333%;
   }
-
   .four-1700 > * {
     width: 25%;
   }
-
   .five-1700 > * {
     width: 20%;
   }
-
   .six-1700 > * {
     width: 16.66666%;
   }
-
   .seven-1700 > * {
     width: 14.28571%;
   }
-
   .eight-1700 > * {
     width: 12.5%;
   }
-
   .nine-1700 > * {
     width: 11.11111%;
   }
-
   .ten-1700 > * {
     width: 10%;
   }
-
   .eleven-1700 > * {
     width: 9.09091%;
   }
-
   .twelve-1700 > * {
     width: 8.33333%;
   }
@@ -1445,47 +1359,36 @@ tr:nth-child(even) {
   .one-1800 > * {
     width: 100%;
   }
-
   .two-1800 > * {
     width: 50%;
   }
-
   .three-1800 > * {
     width: 33.33333%;
   }
-
   .four-1800 > * {
     width: 25%;
   }
-
   .five-1800 > * {
     width: 20%;
   }
-
   .six-1800 > * {
     width: 16.66666%;
   }
-
   .seven-1800 > * {
     width: 14.28571%;
   }
-
   .eight-1800 > * {
     width: 12.5%;
   }
-
   .nine-1800 > * {
     width: 11.11111%;
   }
-
   .ten-1800 > * {
     width: 10%;
   }
-
   .eleven-1800 > * {
     width: 9.09091%;
   }
-
   .twelve-1800 > * {
     width: 8.33333%;
   }
@@ -1494,47 +1397,36 @@ tr:nth-child(even) {
   .one-1900 > * {
     width: 100%;
   }
-
   .two-1900 > * {
     width: 50%;
   }
-
   .three-1900 > * {
     width: 33.33333%;
   }
-
   .four-1900 > * {
     width: 25%;
   }
-
   .five-1900 > * {
     width: 20%;
   }
-
   .six-1900 > * {
     width: 16.66666%;
   }
-
   .seven-1900 > * {
     width: 14.28571%;
   }
-
   .eight-1900 > * {
     width: 12.5%;
   }
-
   .nine-1900 > * {
     width: 11.11111%;
   }
-
   .ten-1900 > * {
     width: 10%;
   }
-
   .eleven-1900 > * {
     width: 9.09091%;
   }
-
   .twelve-1900 > * {
     width: 8.33333%;
   }
@@ -1543,47 +1435,36 @@ tr:nth-child(even) {
   .one-2000 > * {
     width: 100%;
   }
-
   .two-2000 > * {
     width: 50%;
   }
-
   .three-2000 > * {
     width: 33.33333%;
   }
-
   .four-2000 > * {
     width: 25%;
   }
-
   .five-2000 > * {
     width: 20%;
   }
-
   .six-2000 > * {
     width: 16.66666%;
   }
-
   .seven-2000 > * {
     width: 14.28571%;
   }
-
   .eight-2000 > * {
     width: 12.5%;
   }
-
   .nine-2000 > * {
     width: 11.11111%;
   }
-
   .ten-2000 > * {
     width: 10%;
   }
-
   .eleven-2000 > * {
     width: 9.09091%;
   }
-
   .twelve-2000 > * {
     width: 8.33333%;
   }
@@ -1641,52 +1522,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-500 {
     width: 50%;
     display: block;
   }
-
   .third-500 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-500 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-500 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-500 {
     width: 75%;
     display: block;
   }
-
   .fifth-500 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-500 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-500 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-500 {
     width: 80%;
     display: block;
   }
-
   .sixth-500 {
     width: 16.66666%;
     display: block;
@@ -1697,52 +1568,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-600 {
     width: 50%;
     display: block;
   }
-
   .third-600 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-600 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-600 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-600 {
     width: 75%;
     display: block;
   }
-
   .fifth-600 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-600 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-600 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-600 {
     width: 80%;
     display: block;
   }
-
   .sixth-600 {
     width: 16.66666%;
     display: block;
@@ -1753,52 +1614,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-700 {
     width: 50%;
     display: block;
   }
-
   .third-700 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-700 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-700 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-700 {
     width: 75%;
     display: block;
   }
-
   .fifth-700 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-700 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-700 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-700 {
     width: 80%;
     display: block;
   }
-
   .sixth-700 {
     width: 16.66666%;
     display: block;
@@ -1809,52 +1660,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-800 {
     width: 50%;
     display: block;
   }
-
   .third-800 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-800 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-800 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-800 {
     width: 75%;
     display: block;
   }
-
   .fifth-800 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-800 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-800 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-800 {
     width: 80%;
     display: block;
   }
-
   .sixth-800 {
     width: 16.66666%;
     display: block;
@@ -1865,52 +1706,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-900 {
     width: 50%;
     display: block;
   }
-
   .third-900 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-900 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-900 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-900 {
     width: 75%;
     display: block;
   }
-
   .fifth-900 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-900 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-900 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-900 {
     width: 80%;
     display: block;
   }
-
   .sixth-900 {
     width: 16.66666%;
     display: block;
@@ -1921,52 +1752,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1000 {
     width: 50%;
     display: block;
   }
-
   .third-1000 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1000 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1000 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1000 {
     width: 75%;
     display: block;
   }
-
   .fifth-1000 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1000 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1000 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1000 {
     width: 80%;
     display: block;
   }
-
   .sixth-1000 {
     width: 16.66666%;
     display: block;
@@ -1977,52 +1798,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1100 {
     width: 50%;
     display: block;
   }
-
   .third-1100 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1100 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1100 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1100 {
     width: 75%;
     display: block;
   }
-
   .fifth-1100 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1100 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1100 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1100 {
     width: 80%;
     display: block;
   }
-
   .sixth-1100 {
     width: 16.66666%;
     display: block;
@@ -2033,52 +1844,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1200 {
     width: 50%;
     display: block;
   }
-
   .third-1200 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1200 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1200 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1200 {
     width: 75%;
     display: block;
   }
-
   .fifth-1200 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1200 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1200 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1200 {
     width: 80%;
     display: block;
   }
-
   .sixth-1200 {
     width: 16.66666%;
     display: block;
@@ -2089,52 +1890,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1300 {
     width: 50%;
     display: block;
   }
-
   .third-1300 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1300 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1300 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1300 {
     width: 75%;
     display: block;
   }
-
   .fifth-1300 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1300 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1300 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1300 {
     width: 80%;
     display: block;
   }
-
   .sixth-1300 {
     width: 16.66666%;
     display: block;
@@ -2145,52 +1936,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1400 {
     width: 50%;
     display: block;
   }
-
   .third-1400 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1400 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1400 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1400 {
     width: 75%;
     display: block;
   }
-
   .fifth-1400 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1400 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1400 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1400 {
     width: 80%;
     display: block;
   }
-
   .sixth-1400 {
     width: 16.66666%;
     display: block;
@@ -2201,52 +1982,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1500 {
     width: 50%;
     display: block;
   }
-
   .third-1500 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1500 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1500 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1500 {
     width: 75%;
     display: block;
   }
-
   .fifth-1500 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1500 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1500 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1500 {
     width: 80%;
     display: block;
   }
-
   .sixth-1500 {
     width: 16.66666%;
     display: block;
@@ -2257,52 +2028,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1600 {
     width: 50%;
     display: block;
   }
-
   .third-1600 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1600 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1600 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1600 {
     width: 75%;
     display: block;
   }
-
   .fifth-1600 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1600 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1600 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1600 {
     width: 80%;
     display: block;
   }
-
   .sixth-1600 {
     width: 16.66666%;
     display: block;
@@ -2313,52 +2074,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1700 {
     width: 50%;
     display: block;
   }
-
   .third-1700 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1700 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1700 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1700 {
     width: 75%;
     display: block;
   }
-
   .fifth-1700 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1700 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1700 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1700 {
     width: 80%;
     display: block;
   }
-
   .sixth-1700 {
     width: 16.66666%;
     display: block;
@@ -2369,52 +2120,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1800 {
     width: 50%;
     display: block;
   }
-
   .third-1800 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1800 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1800 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1800 {
     width: 75%;
     display: block;
   }
-
   .fifth-1800 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1800 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1800 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1800 {
     width: 80%;
     display: block;
   }
-
   .sixth-1800 {
     width: 16.66666%;
     display: block;
@@ -2425,52 +2166,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-1900 {
     width: 50%;
     display: block;
   }
-
   .third-1900 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-1900 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-1900 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-1900 {
     width: 75%;
     display: block;
   }
-
   .fifth-1900 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-1900 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-1900 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-1900 {
     width: 80%;
     display: block;
   }
-
   .sixth-1900 {
     width: 16.66666%;
     display: block;
@@ -2481,52 +2212,42 @@ tr:nth-child(even) {
     width: 100%;
     display: block;
   }
-
   .half-2000 {
     width: 50%;
     display: block;
   }
-
   .third-2000 {
     width: 33.33333%;
     display: block;
   }
-
   .two-third-2000 {
     width: 66.66666%;
     display: block;
   }
-
   .fourth-2000 {
     width: 25%;
     display: block;
   }
-
   .three-fourth-2000 {
     width: 75%;
     display: block;
   }
-
   .fifth-2000 {
     width: 20%;
     display: block;
   }
-
   .two-fifth-2000 {
     width: 40%;
     display: block;
   }
-
   .three-fifth-2000 {
     width: 60%;
     display: block;
   }
-
   .four-fifth-2000 {
     width: 80%;
     display: block;
   }
-
   .sixth-2000 {
     width: 16.66666%;
     display: block;
@@ -2660,43 +2381,33 @@ tr:nth-child(even) {
   .off-none-500 {
     margin-left: 0;
   }
-
   .off-half-500 {
     margin-left: 50%;
   }
-
   .off-third-500 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-500 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-500 {
     margin-left: 25%;
   }
-
   .off-three-fourth-500 {
     margin-left: 75%;
   }
-
   .off-fifth-500 {
     margin-left: 20%;
   }
-
   .off-two-fifth-500 {
     margin-left: 40%;
   }
-
   .off-three-fifth-500 {
     margin-left: 60%;
   }
-
   .off-four-fifth-500 {
     margin-left: 80%;
   }
-
   .off-sixth-500 {
     margin-left: 16.66666%;
   }
@@ -2705,43 +2416,33 @@ tr:nth-child(even) {
   .off-none-600 {
     margin-left: 0;
   }
-
   .off-half-600 {
     margin-left: 50%;
   }
-
   .off-third-600 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-600 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-600 {
     margin-left: 25%;
   }
-
   .off-three-fourth-600 {
     margin-left: 75%;
   }
-
   .off-fifth-600 {
     margin-left: 20%;
   }
-
   .off-two-fifth-600 {
     margin-left: 40%;
   }
-
   .off-three-fifth-600 {
     margin-left: 60%;
   }
-
   .off-four-fifth-600 {
     margin-left: 80%;
   }
-
   .off-sixth-600 {
     margin-left: 16.66666%;
   }
@@ -2750,43 +2451,33 @@ tr:nth-child(even) {
   .off-none-700 {
     margin-left: 0;
   }
-
   .off-half-700 {
     margin-left: 50%;
   }
-
   .off-third-700 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-700 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-700 {
     margin-left: 25%;
   }
-
   .off-three-fourth-700 {
     margin-left: 75%;
   }
-
   .off-fifth-700 {
     margin-left: 20%;
   }
-
   .off-two-fifth-700 {
     margin-left: 40%;
   }
-
   .off-three-fifth-700 {
     margin-left: 60%;
   }
-
   .off-four-fifth-700 {
     margin-left: 80%;
   }
-
   .off-sixth-700 {
     margin-left: 16.66666%;
   }
@@ -2795,43 +2486,33 @@ tr:nth-child(even) {
   .off-none-800 {
     margin-left: 0;
   }
-
   .off-half-800 {
     margin-left: 50%;
   }
-
   .off-third-800 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-800 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-800 {
     margin-left: 25%;
   }
-
   .off-three-fourth-800 {
     margin-left: 75%;
   }
-
   .off-fifth-800 {
     margin-left: 20%;
   }
-
   .off-two-fifth-800 {
     margin-left: 40%;
   }
-
   .off-three-fifth-800 {
     margin-left: 60%;
   }
-
   .off-four-fifth-800 {
     margin-left: 80%;
   }
-
   .off-sixth-800 {
     margin-left: 16.66666%;
   }
@@ -2840,43 +2521,33 @@ tr:nth-child(even) {
   .off-none-900 {
     margin-left: 0;
   }
-
   .off-half-900 {
     margin-left: 50%;
   }
-
   .off-third-900 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-900 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-900 {
     margin-left: 25%;
   }
-
   .off-three-fourth-900 {
     margin-left: 75%;
   }
-
   .off-fifth-900 {
     margin-left: 20%;
   }
-
   .off-two-fifth-900 {
     margin-left: 40%;
   }
-
   .off-three-fifth-900 {
     margin-left: 60%;
   }
-
   .off-four-fifth-900 {
     margin-left: 80%;
   }
-
   .off-sixth-900 {
     margin-left: 16.66666%;
   }
@@ -2885,43 +2556,33 @@ tr:nth-child(even) {
   .off-none-1000 {
     margin-left: 0;
   }
-
   .off-half-1000 {
     margin-left: 50%;
   }
-
   .off-third-1000 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1000 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1000 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1000 {
     margin-left: 75%;
   }
-
   .off-fifth-1000 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1000 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1000 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1000 {
     margin-left: 80%;
   }
-
   .off-sixth-1000 {
     margin-left: 16.66666%;
   }
@@ -2930,43 +2591,33 @@ tr:nth-child(even) {
   .off-none-1100 {
     margin-left: 0;
   }
-
   .off-half-1100 {
     margin-left: 50%;
   }
-
   .off-third-1100 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1100 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1100 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1100 {
     margin-left: 75%;
   }
-
   .off-fifth-1100 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1100 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1100 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1100 {
     margin-left: 80%;
   }
-
   .off-sixth-1100 {
     margin-left: 16.66666%;
   }
@@ -2975,43 +2626,33 @@ tr:nth-child(even) {
   .off-none-1200 {
     margin-left: 0;
   }
-
   .off-half-1200 {
     margin-left: 50%;
   }
-
   .off-third-1200 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1200 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1200 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1200 {
     margin-left: 75%;
   }
-
   .off-fifth-1200 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1200 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1200 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1200 {
     margin-left: 80%;
   }
-
   .off-sixth-1200 {
     margin-left: 16.66666%;
   }
@@ -3020,43 +2661,33 @@ tr:nth-child(even) {
   .off-none-1300 {
     margin-left: 0;
   }
-
   .off-half-1300 {
     margin-left: 50%;
   }
-
   .off-third-1300 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1300 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1300 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1300 {
     margin-left: 75%;
   }
-
   .off-fifth-1300 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1300 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1300 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1300 {
     margin-left: 80%;
   }
-
   .off-sixth-1300 {
     margin-left: 16.66666%;
   }
@@ -3065,43 +2696,33 @@ tr:nth-child(even) {
   .off-none-1400 {
     margin-left: 0;
   }
-
   .off-half-1400 {
     margin-left: 50%;
   }
-
   .off-third-1400 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1400 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1400 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1400 {
     margin-left: 75%;
   }
-
   .off-fifth-1400 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1400 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1400 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1400 {
     margin-left: 80%;
   }
-
   .off-sixth-1400 {
     margin-left: 16.66666%;
   }
@@ -3110,43 +2731,33 @@ tr:nth-child(even) {
   .off-none-1500 {
     margin-left: 0;
   }
-
   .off-half-1500 {
     margin-left: 50%;
   }
-
   .off-third-1500 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1500 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1500 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1500 {
     margin-left: 75%;
   }
-
   .off-fifth-1500 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1500 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1500 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1500 {
     margin-left: 80%;
   }
-
   .off-sixth-1500 {
     margin-left: 16.66666%;
   }
@@ -3155,43 +2766,33 @@ tr:nth-child(even) {
   .off-none-1600 {
     margin-left: 0;
   }
-
   .off-half-1600 {
     margin-left: 50%;
   }
-
   .off-third-1600 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1600 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1600 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1600 {
     margin-left: 75%;
   }
-
   .off-fifth-1600 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1600 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1600 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1600 {
     margin-left: 80%;
   }
-
   .off-sixth-1600 {
     margin-left: 16.66666%;
   }
@@ -3200,43 +2801,33 @@ tr:nth-child(even) {
   .off-none-1700 {
     margin-left: 0;
   }
-
   .off-half-1700 {
     margin-left: 50%;
   }
-
   .off-third-1700 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1700 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1700 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1700 {
     margin-left: 75%;
   }
-
   .off-fifth-1700 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1700 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1700 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1700 {
     margin-left: 80%;
   }
-
   .off-sixth-1700 {
     margin-left: 16.66666%;
   }
@@ -3245,43 +2836,33 @@ tr:nth-child(even) {
   .off-none-1800 {
     margin-left: 0;
   }
-
   .off-half-1800 {
     margin-left: 50%;
   }
-
   .off-third-1800 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1800 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1800 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1800 {
     margin-left: 75%;
   }
-
   .off-fifth-1800 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1800 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1800 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1800 {
     margin-left: 80%;
   }
-
   .off-sixth-1800 {
     margin-left: 16.66666%;
   }
@@ -3290,43 +2871,33 @@ tr:nth-child(even) {
   .off-none-1900 {
     margin-left: 0;
   }
-
   .off-half-1900 {
     margin-left: 50%;
   }
-
   .off-third-1900 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-1900 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-1900 {
     margin-left: 25%;
   }
-
   .off-three-fourth-1900 {
     margin-left: 75%;
   }
-
   .off-fifth-1900 {
     margin-left: 20%;
   }
-
   .off-two-fifth-1900 {
     margin-left: 40%;
   }
-
   .off-three-fifth-1900 {
     margin-left: 60%;
   }
-
   .off-four-fifth-1900 {
     margin-left: 80%;
   }
-
   .off-sixth-1900 {
     margin-left: 16.66666%;
   }
@@ -3335,43 +2906,33 @@ tr:nth-child(even) {
   .off-none-2000 {
     margin-left: 0;
   }
-
   .off-half-2000 {
     margin-left: 50%;
   }
-
   .off-third-2000 {
     margin-left: 33.33333%;
   }
-
   .off-two-third-2000 {
     margin-left: 66.66666%;
   }
-
   .off-fourth-2000 {
     margin-left: 25%;
   }
-
   .off-three-fourth-2000 {
     margin-left: 75%;
   }
-
   .off-fifth-2000 {
     margin-left: 20%;
   }
-
   .off-two-fifth-2000 {
     margin-left: 40%;
   }
-
   .off-three-fifth-2000 {
     margin-left: 60%;
   }
-
   .off-four-fifth-2000 {
     margin-left: 80%;
   }
-
   .off-sixth-2000 {
     margin-left: 16.66666%;
   }
@@ -3383,8 +2944,8 @@ nav {
   right: 0;
   height: 3em;
   padding: 0 0.6em;
-  background: #fff;
-  box-shadow: 0 0 0.2em rgba(170, 170, 170, 0.2);
+  background: var(--bg);
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.2);
   z-index: 10000;
   transition: all 0.3s;
   transform-style: preserve-3d;
@@ -3435,15 +2996,15 @@ nav .burger {
     -webkit-tap-highlight-color: transparent;
   }
   nav .burger ~ .menu,
-nav .show:checked ~ .burger {
+  nav .show:checked ~ .burger {
     position: fixed;
     min-height: 100%;
     top: 0;
     right: 0;
     bottom: -1000em;
     margin: 0;
-    background: #fff;
-    transition: all 0.5s ease;
+    background: var(--bg);
+    transition: all 0.2s ease;
     transform: none;
   }
   nav .burger ~ .menu {
@@ -3453,44 +3014,44 @@ nav .show:checked ~ .burger {
     color: transparent;
     width: 100%;
     border-radius: 0;
-    background: rgba(17, 17, 17, 0.2);
-    transition: all 0.5s ease;
+    background: rgba(var(--fg-rgb), 0.2);
+    transition: all 0.2s ease;
   }
   nav .show ~ .menu {
     width: 70%;
     max-width: 300px;
     transform-origin: center right;
-    transition: all 0.25s ease;
+    transition: all 0.1s ease;
     transform: scaleX(0);
   }
   nav .show ~ .menu > * {
     transform: translateX(100%);
-    transition: all 0s ease 0.5s;
+    transition: all 0s ease 0.2s;
   }
   nav .show:checked ~ .menu > *:nth-child(1) {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
   }
   nav .show:checked ~ .menu > *:nth-child(2) {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.04s;
   }
   nav .show:checked ~ .menu > *:nth-child(3) {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.08s;
   }
   nav .show:checked ~ .menu > *:nth-child(4) {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.12s;
   }
   nav .show:checked ~ .menu > *:nth-child(5) {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.16s;
   }
   nav .show:checked ~ .menu > *:nth-child(6) {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
   }
   nav .show:checked ~ .menu {
     transform: scaleX(1);
   }
   nav .show:checked ~ .menu > * {
     transform: translateX(0);
-    transition: all 0.5s ease-in-out 0.6s;
+    transition: all 0.2s ease-in-out 0.24s;
   }
   nav .burger ~ .menu > * {
     display: block;
@@ -3514,14 +3075,14 @@ nav .show:checked ~ .burger {
 
 .stack:first-child,
 .stack:first-child .toggle {
-  border-top-left-radius: 0.2em;
-  border-top-right-radius: 0.2em;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
 }
 
 .stack:last-child,
 .stack:last-child .toggle {
-  border-bottom-left-radius: 0.2em;
-  border-bottom-right-radius: 0.2em;
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
 }
 
 input.stack,
@@ -3542,17 +3103,17 @@ textarea.stack:focus + select,
 select.stack:focus + input,
 select.stack:focus + textarea,
 select.stack:focus + select {
-  border-top-color: #0074d9;
+  border-top-color: #0059a6;
 }
 
 .modal .overlay ~ *, .card {
   position: relative;
   box-shadow: none;
-  border-radius: 0.2em;
+  border-radius: 0.3em;
   border: 1px solid #aaa;
   overflow: hidden;
   text-align: left;
-  background: #fff;
+  background: var(--bg);
   margin-bottom: 0.6em;
   padding: 0;
   transition: all 0.3s ease;
@@ -3636,7 +3197,7 @@ select.stack:focus + select {
   width: auto;
 }
 .modal .overlay ~ * .close:hover, .card .close:hover {
-  color: #ff4136;
+  color: #ff1103;
 }
 .modal .overlay ~ * h1 + .close, .card h1 + .close {
   margin: 0.2em;
@@ -3645,7 +3206,7 @@ select.stack:focus + select {
   margin: 0.1em;
 }
 .modal .overlay ~ * .dangerous, .card .dangerous {
-  background: #ff4136;
+  background: #ff1103;
   float: right;
 }
 
@@ -3668,8 +3229,8 @@ select.stack:focus + select {
   position: fixed;
   margin: 0;
   border-radius: 0;
-  background: rgba(17, 17, 17, 0.2);
-  transition: all 0.3s;
+  background: rgba(var(--fg-rgb), 0.2);
+  transition: all 0.2s ease;
   z-index: 100000;
 }
 .modal .overlay:before, .modal .overlay:after {
@@ -3682,13 +3243,13 @@ select.stack:focus + select {
   left: 50%;
   transform: translateX(-50%) translateY(-50%) scale(0.2, 0.2);
   z-index: 1000000;
-  transition: all 0.3s;
+  transition: all 0.2s ease;
 }
 .modal > input:checked ~ * {
   display: block;
   opacity: 1;
   max-height: 10000px;
-  transition: all 0.3s;
+  transition: all 0.2s ease;
 }
 .modal > input:checked ~ .overlay ~ * {
   max-height: 90%;
@@ -3711,7 +3272,7 @@ select.stack:focus + select {
   cursor: pointer;
   border: 0;
   margin: 0.3em 0;
-  border-radius: 0.2em;
+  border-radius: 0.3em;
   background-color: #ddd;
   background-size: cover;
   background-position: center center;
@@ -3874,7 +3435,7 @@ select.stack:focus + select {
 [data-tooltip]:after {
   margin-left: 0;
   font-size: 0.8em;
-  background: #111;
+  background: var(--fg);
   content: attr(data-tooltip);
   white-space: nowrap;
 }
@@ -3884,7 +3445,7 @@ select.stack:focus + select {
   height: 0;
   border-width: 0;
   border-style: solid;
-  border-color: transparent transparent #111;
+  border-color: transparent transparent var(--fg);
   margin-top: 0;
   left: 10px;
 }
@@ -3904,7 +3465,7 @@ select.stack:focus + select {
   margin-bottom: 12px;
 }
 .tooltip-top:before {
-  border-color: #111 transparent transparent;
+  border-color: var(--fg) transparent transparent;
   margin-bottom: 0;
   left: 10px;
 }
@@ -3916,7 +3477,7 @@ select.stack:focus + select {
   top: 0;
 }
 .tooltip-right:before {
-  border-color: transparent #111 transparent transparent;
+  border-color: transparent var(--fg) transparent transparent;
   margin-left: -6px;
   left: 100%;
   top: 7px;
@@ -3930,7 +3491,7 @@ select.stack:focus + select {
   top: 0;
 }
 .tooltip-left:before {
-  border-color: transparent transparent transparent #111;
+  border-color: transparent transparent transparent var(--fg);
   margin-right: -6px;
   right: 100%;
   top: 7px;

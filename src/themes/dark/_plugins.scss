@@ -1,0 +1,59 @@
+nav,
+input[readonly] {
+  background-color: $silver !important;
+}
+
+.dark {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: text-top;
+  margin-right: 0.1em;
+}
+
+.dark .icon {
+  filter: invert(1);
+}
+
+th,
+button,
+.button:not(.pseudo),
+input[type="submit"] {
+  color: #fff !important;
+}
+
+table input,
+table select,
+table button,
+table .button {
+  color: var(--fg);
+  font-size: 0.7em;
+  font-weight: 400;
+}
+
+.income {
+  color: $green;
+}
+
+.expense {
+  color: $red;
+}
+
+@media (prefers-color-scheme: dark) {
+  nav,
+  input[readonly] {
+    background-color: #444 !important;
+  }
+
+  .icon {
+    filter: invert(1);
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
