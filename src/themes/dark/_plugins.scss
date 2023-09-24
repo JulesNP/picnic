@@ -3,6 +3,10 @@ input[readonly] {
   background-color: $silver !important;
 }
 
+select {
+  background-position: calc(100% - 13px) calc(50% - 2px) !important;
+}
+
 .dark {
   background-color: #111 !important;
   color: #fff !important;
@@ -49,11 +53,16 @@ table .button {
     background-color: #444 !important;
   }
 
+  select {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjMiPjxwYXRoIGQ9Im0gMCwxIDEsMiAxLC0yIHoiIGZpbGw9IndoaXRlIi8+PC9zdmc+") !important;
+  }
+
   .icon {
     filter: invert(1);
   }
 
-  input[type="date"]::-webkit-calendar-picker-indicator {
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
 }
