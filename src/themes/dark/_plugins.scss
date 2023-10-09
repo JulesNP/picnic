@@ -3,7 +3,7 @@ input[readonly] {
   background-color: $silver !important;
 }
 
-select {
+select:not([multiple]) {
   background-position: calc(100% - 13px) calc(50% - 2px) !important;
 }
 
@@ -53,7 +53,7 @@ table .button {
     background-color: #444 !important;
   }
 
-  select {
+  select:not([multiple]) {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjMiPjxwYXRoIGQ9Im0gMCwxIDEsMiAxLC0yIHoiIGZpbGw9IndoaXRlIi8+PC9zdmc+") !important;
   }
 
